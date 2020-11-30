@@ -1,0 +1,57 @@
+
+<!-- navber -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">MyBlog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <% if (user){ %>
+        <a class="nav-item nav-link" href="./pages/new">new</a>
+        <a class="nav-item nav-link" href="logout">logout</a>
+      <% }else{ %>
+        <a class="nav-item nav-link" href="/login">login</a>
+      <% } %>
+    </div>
+  </div>
+</nav>
+
+<br>
+<!-- topPage -->
+<div class="jumbotron">
+  <h1 class="display-4">MYBLOGサービス</h1>
+  <p class="lead">ただの練習だけどね笑笑</p>
+</div>
+
+<br>
+
+<% if(user){ %>
+  <% pages.forEach(page => {%>
+    <table class="table">
+      <thead>
+        <!-- 項目 -->
+        <tr>
+          <th scope="col">title</th>
+          <th scope="col">content</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- コンテンツ -->
+        <tr>
+          <td><%= page.title %> </td>
+          <td><%= page.contents %> </td>
+          <td>            
+            <a class="btn btn-primary" href="/pages/<%= page.pagesId %> " role="button">詳細</a>
+            <a class="btn btn-success" href="/pages/<%= page.pagesId %>/edit" role="button">編集</a>
+            <a class="btn btn-danger" href="/pages/<%= page.pagesId %>/delete" role="button">消去</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% }); %> 
+<% }else{ %>
+
+<% } %>   
+

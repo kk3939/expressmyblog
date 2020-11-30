@@ -1,0 +1,29 @@
+<!-- navber -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">MyBlog</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <% if (user){ %>
+          <a class="nav-item nav-link" href="/pages/new">new</a>
+          <a class="nav-item nav-link" href="logout">logout</a>
+        <% }else{ %>
+          <a class="nav-item nav-link" href="/login">login</a>
+        <% } %>
+      </div>
+    </div>
+  </nav>
+  <br>
+
+
+<!-- pages routesにpostされる予定編集ページ -->
+<form method="post", action="/pages/edit">
+  <input type="hidden" name="pagesId" value="<%= pages.pagesId %>">
+  <input class="form-control form-control-lg" type="text" placeholder="title" name="title" value="<%= pages.title %>">
+  <br>
+  <input class="form-control form-control-lg" type="text" placeholder="contents" name="contents" value="<%= pages.contents %>">
+  <br>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
